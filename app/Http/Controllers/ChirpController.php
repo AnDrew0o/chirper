@@ -40,6 +40,7 @@ class ChirpController extends Controller
     {
         $validated = $request->validate([
 
+            'title' => 'required|string|max:40',
             'message' => 'required|string|max:255',
 
         ]);
@@ -89,6 +90,7 @@ class ChirpController extends Controller
         $this->authorize('update', $chirp);
 
         $validated = $request->validate([
+            'title' => 'required|string|max:40',
             'message' => 'required|string|max:255',
         ]);
 

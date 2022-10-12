@@ -4,6 +4,12 @@
             @csrf
             @method('patch')
             <textarea
+                name="title"
+                placeholder="{{ __('Write your title here') }}"
+                class=" block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+            >{{ old('title', $chirp->title) }}</textarea>
+            <x-input-error :messages="$errors->get('title')" class="mt-2" />
+            <textarea
                 name="message"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >{{ old('message', $chirp->message) }}</textarea>

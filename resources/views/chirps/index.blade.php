@@ -4,6 +4,12 @@
         <form method="POST" action="{{ route('chirps.store') }}">
             @csrf
             <textarea
+                name="title"
+                placeholder="{{ __('Write your title here') }}"
+                class=" block border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+            >{{ old('title') }}</textarea>
+            <x-input-error :messages="$errors->get('title')" class="mt-2" />
+            <textarea
                 name="message"
                 placeholder="{{ __('What\'s on your mind?') }}"
                 class=" block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
@@ -21,7 +27,8 @@
                     <div class="flex-1">
                         <div class="flex justify-between items-center">
                             <div>
-                                <span class="text-gray-800">{{ $chirp->user->name }}</span>
+                                <span class="mt-4 text-lg text-gray-900">{{ $chirp->title }}</span>
+                                <span class="text-gray-800">by {{ $chirp->user->name }}</span>
                                 <small class="ml-2 text-sm text-gray-600">{{ $chirp->created_at->format('j M Y, g:i a') }}</small>
                                 @unless ($chirp->created_at->eq($chirp->updated_at))
                                     <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
