@@ -1,5 +1,8 @@
 <x-app-layout>
+    @livewireStyles
+    @livewireScripts
     <div class="py-12 max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+    <livewire:image-search /> 
         <form method="POST" action="{{ route('chirps.update', $chirp) }}">
             @csrf
             @method('patch')
@@ -15,6 +18,8 @@
             >{{ old('message', $chirp->message) }}</textarea>
             <x-input-error :messages="$errors->get('message')" class="mt-2" />
             <div class="mt-4 space-x-2">
+                <!-- <x-primary-button>{{ __('Search image') }}</x-primary-button>
+                <x-primary-button>{{ __('Insert image') }}</x-primary-button> -->
                 <x-primary-button>{{ __('Save') }}</x-primary-button>
                 <a href="{{ route('chirps.index') }}">{{ __('Cancel') }}</a>
             </div>
